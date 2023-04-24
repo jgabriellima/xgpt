@@ -111,19 +111,14 @@ ADMIN_URL = env('DJANGO_ADMIN_URL', default='admin')
 # Anymail (Mailgun)
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
-# INSTALLED_APPS += ['anymail']  # noqa F405
-# EMAIL_BACKEND = 'anymail.backends.sendgrid.EmailBackend'
+INSTALLED_APPS += ['anymail']  # noqa F405
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
-# ANYMAIL = {
-#     'SENDGRID_API_KEY': env('SENDGRID_API_KEY', default=''),
-    # 'MAILGUN_SENDER_DOMAIN': env('MAILGUN_DOMAIN', default='')
-# }
+ANYMAIL = {
+    'MAILGUN_API_KEY': '5658c4e5fa7fe5a834b0b42cca2ffe38-70c38fed-9e125e89',
+    'MAILGUN_SENDER_DOMAIN': env('MAILGUN_DOMAIN', default='')
+}
 
-EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-host
-EMAIL_HOST = "localhost"
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-port
-EMAIL_PORT = 1025
 
 # Gunicorn
 # ------------------------------------------------------------------------------
